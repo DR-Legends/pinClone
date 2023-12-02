@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome in PinClone <%= user.username%></title>
+    <!-- Add your CSS links or styles here -->
+  <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+
+  <header>
+
+    <div class="container">
+
+    
+        <div class="profile">
+
+          <div class="profile-image">
+
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBKyRiMWL5LWyrK7Pk-KRGyROP7e60o3bnr11Tjucec6l3rEk0GJcDU8dWuw&s" alt="">
+
+          </div>
+
+          <div class="profile-user-settings">
+             <h1 class="profile-user-name"><%= user.username%></h1>
+            <button class="btn profile-edit-btn">Edit Profile</button>
+
+            <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+
+          </div>
+          <div class="profile-bio">
+
+            <p><span class="profile-real-name">Hiii <%= user.username%></span>. Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
+            <a href="/logout" class="btn logout">Logout</a>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+              <input type="text" name="fileCaption" placeholder="Give Some Name of Your file.">
+              <input type="file" name="file">
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+        
+      <!-- End of profile section -->
+     
+    </div>
+    <!-- End of container -->
+   
+  </header>
+
+  <main>
+
+    <div class="container">
+      
+
+      <div class="gallery">
+
+       <div class="cardd">
+         <% user.posts.forEach(function(post){ %>
+             
+               <div class="gallery-item" tabindex="0">
+
+                    <img src="/images/uploads/<%=post.image%>" class="gallery-image" alt="">
+                  <h2 class="caption"><%=post.postText%></h2>
+                  </div>
+         <% })%>
+           
+       </div>
+        
+      </div>
+      <!-- End of gallery -->
+
+     
+
+    </div>
+    <!-- End of container -->
+
+  </main>
+
+</html>
